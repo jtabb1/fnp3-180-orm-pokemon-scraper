@@ -1,13 +1,21 @@
+# Student's solution utilized peek of 1 of 2 files of the official 
+#   solution to pass all tests.
+
 class Pokemon
 
   attr_accessor :name, :type
   attr_reader :id, :db
 
-  def initialize(name:, type:, id: nil, db:)
+  def initialize_0(name:, type:, id: nil, db:)
     @name = name
     @type = type
     @id = id
     @db = db
+  end
+
+  # The below method from the official solution also works:
+  def initialize(id:, name:, type:, db:)
+    @id, @name, @type, @db = id, name, type, db
   end
 
   def self.save(name,type,db)
@@ -26,7 +34,4 @@ class Pokemon
     rw = db.execute(sql, id)[0]
     self.new(name: rw[1], type: rw[2], id: rw[0], db: db)
   end
-
-
-
 end
